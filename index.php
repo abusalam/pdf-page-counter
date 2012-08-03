@@ -60,10 +60,15 @@ function open(f,ElementID) {
 	// Read in the pdf file as a arrayBuffer.
 	reader.readAsArrayBuffer(f);
 }
-// Setup the dnd listeners.
-var dropZone = document.getElementById('drop_zone');
-dropZone.addEventListener('dragover', handleDragOver, false);
-dropZone.addEventListener('drop', handleFileSelect, false);
+if(window.File && window.FileReader && window.FileList && window.Blob) {
+	var dropZone = document.getElementById('drop_zone');
+	dropZone.addEventListener('dragover', handleDragOver, false);
+	dropZone.addEventListener('drop', handleFileSelect, false);
+} 
+else {
+	alert('This application not supported in this browser.');
+}
+
 </script>
 </div>
 </body>
